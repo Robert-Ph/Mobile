@@ -1,0 +1,30 @@
+<!-- custom_toast_layout.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_toast_container"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:background="@color/pink_backgroud"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/icon_done"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/done_icon" />
+
+    <TextView
+        android:id="@+id/text_notion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_done"
+
+        android:layout_marginTop="14dp"
+        android:gravity="center|bottom"
+        android:text="Successful"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        />
+</RelativeLayout>

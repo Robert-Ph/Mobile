@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textSignup"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="SignUp"
+        style="@style/fontPacifico"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:shadowColor="@color/black"
+        android:shadowRadius="30"
+        android:textStyle="bold"
+        android:background="@xml/rectangle"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/full_name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textSignup"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:background="@xml/rounded_border"
+        android:hint="Full name"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"
+        android:textSize="20dp" />
+    <EditText
+        android:id="@+id/dateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/full_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:background="@xml/rounded_border"
+        android:hint="dd/MM/yyyy"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"
+        android:textSize="20dp" />
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        android:layout_below="@+id/full_name"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/maleRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:layout_marginRight="10dp"
+            tools:ignore="TouchTargetSizeCheck"/>
+
+        <RadioButton
+            android:id="@+id/femaleRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Felmale"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </RadioGroup>
+    <EditText
+        android:id="@+id/email_signup"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateOfBirth"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:background="@xml/rounded_border"
+        android:hint="Email"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/password_signup"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_signup"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@xml/rounded_border"
+        android:hint="Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"/>
+    <EditText
+        android:id="@+id/password_retype_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_signup"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@xml/rounded_border"
+        android:hint="Re-enter Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"/>
+<!--        android:textSize="20dp" />-->
+    <Button
+        android:id="@+id/btn_doneSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_retype_input"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Create"
+        android:background="@xml/btn_pressed" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/forgotPass"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/btn_doneSignIn"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:gravity="center"-->
+<!--        android:clickable="true"-->
+<!--        android:minHeight="48dp"-->
+<!--        android:text="Forgot Password ?" />-->
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@xml/effect_back_btn"
+        android:contentDescription="@string/app_name" />
+</RelativeLayout>
