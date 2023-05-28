@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/pink_accent"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:theme="@style/AppTheme.NoActionBar">
+
+    <ImageView
+        android:id="@+id/nav_image_user"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_userdefault_male" />
+
+    <TextView
+        android:id="@+id/nav_name_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Username is here"
+        android:textSize="30dp"/>
+
+
+</LinearLayout>
