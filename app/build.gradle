@@ -57,5 +57,6 @@ dependencies {
     implementation 'org.androidannotations:androidannotations-api:4.6.0'
     annotationProcessor "org.androidannotations:androidannotations:4.6.0"
 
+    implementation 'org.jsoup:jsoup:1.14.3'
 
 }
