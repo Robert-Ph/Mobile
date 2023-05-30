@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -20,29 +21,34 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
 
+
+
         <RelativeLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="678dp"
             android:background="@color/pink_backgroud"
             android:paddingTop="30dp">
 
             <TextView
-                android:id="@+id/nd1"
+                android:id="@+id/gg_map"
                 style="@style/itemText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Noi dung 1" />
+                android:text="Bookstore Maps" />
 
             <TextView
-                android:id="@+id/nd2"
+                android:id="@+id/chat_gpt"
                 style="@style/itemText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nd1"
-                android:text="Noi dung 2" />
+                android:layout_below="@+id/gg_map"
+                android:text="My ChatGPT" />
+
 
         </RelativeLayout>
+
+
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
