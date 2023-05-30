@@ -3,7 +3,6 @@ package com.example.sharingapp;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.Manifest;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
+        btnTestPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PDFViewActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
