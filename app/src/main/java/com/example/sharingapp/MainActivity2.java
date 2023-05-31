@@ -76,6 +76,14 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView pdfList = (TextView) findViewById(R.id.pdfList);
+        pdfList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity2.this, PDFListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -45,6 +45,13 @@
                 android:layout_below="@+id/gg_map"
                 android:text="My ChatGPT" />
 
+            <TextView
+                android:id="@+id/pdfList"
+                style="@style/itemText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chat_gpt"
+                android:text="Danh sách tài liệu" />
 
         </RelativeLayout>
 
