@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,16 +45,16 @@ public class PDFListActivity extends AppCompatActivity {
         new LoadPDFListTask().execute(url);
     }
 
-    private class LoadPDFListTask extends AsyncTask<String, Void, List<String>> {
+    private class LoadPDFListTask extends AsyncTask<String, Void, List<PDFFile>> {
 
         @Override
-        protected List<String> doInBackground(String... urls) {
+        protected List<PDFFile> doInBackground(String... urls) {
             String url = urls[0];
-            List<String> fileList = new ArrayList<>();
+            List<PDFFile> fileList = new ArrayList<>();
             try {
                 Document document = Jsoup.connect(url).get();
+//                System.out.println("document:" + document);
                 Elements fileElements = document.select("div[data-tooltip]");
-                System.out.println(fileElements);
                 for (Element fileElement : fileElements) {
                     String fileName = fileElement.attr("data-tooltip");
                     if (!fileName.startsWith("Đang tải người dùng")) { // Kiểm tra xem phần tử có chứa tên file và thư mục hay không
@@ -61,7 +62,11 @@ public class PDFListActivity extends AppCompatActivity {
                         if (parts.length >= 2) {
                             String fileType = parts[0].trim();
                             String fileDetails = parts[1].trim();
-                            fileList.add("Loại file: " + fileType + ", " + fileDetails);
+                            if (fileType.equalsIgnoreCase("PDF")) { // Kiểm tra loại file có phải là PDF không
+                                String fileUrl = getFileUrl(fileElement); // Lấy URL của tệp PDF
+                                PDFFile pdfFile = new PDFFile(fileName, fileUrl);
+                                fileList.add(pdfFile);
+                            }
                         }
                     }
                 }
@@ -70,20 +75,24 @@ public class PDFListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            System.out.println("Số lượng file: " + fileList.size());
             return fileList;
+        }
+
+        // Phương thức này giúp lấy URL của tệp PDF từ phần tử HTML
+        private String getFileUrl(Element fileElement) {
+            String imageUrl = fileElement.select("img").attr("src");
+            if (imageUrl != null && imageUrl.startsWith("https://lh3.google.com")) {
+                String fileId = imageUrl.substring(imageUrl.lastIndexOf("/d/") + 3, imageUrl.indexOf("="));
+                return "https://drive.google.com/uc?id=" + fileId;
+            }
+            return null;
         }
 
 
         @Override
-        protected void onPostExecute(List<String> fileList) {
+        protected void onPostExecute(List<PDFFile> fileList) {
             if (fileList != null) {
                 adapter.setPDFList(fileList);
-                // Print the result to the console
-                System.out.println("fileList.size: " + fileList.size());
-                for (String fileName : fileList) {
-                    System.out.println("File name: " + fileName);
-                }
             } else {
                 Toast.makeText(PDFListActivity.this, "Error loading PDF list", Toast.LENGTH_SHORT).show();
             }
@@ -92,9 +101,9 @@ public class PDFListActivity extends AppCompatActivity {
 
     private class PDFListAdapter extends RecyclerView.Adapter<PDFListAdapter.PDFViewHolder> {
 
-        private List<String> pdfList;
+        private List<PDFFile> pdfList;
 
-        public void setPDFList(List<String> pdfList) {
+        public void setPDFList(List<PDFFile> pdfList) {
             this.pdfList = pdfList;
             notifyDataSetChanged();
         }
@@ -108,8 +117,8 @@ public class PDFListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull PDFViewHolder holder, int position) {
-            String fileName = pdfList.get(position);
-            holder.bind(fileName);
+            PDFFile pdfFile = pdfList.get(position);
+            holder.bind(pdfFile);
         }
 
         @Override
@@ -124,11 +133,32 @@ public class PDFListActivity extends AppCompatActivity {
             public PDFViewHolder(@NonNull View itemView) {
                 super(itemView);
                 txtFileName = itemView.findViewById(R.id.txtFileName);
+
+                // Xử lý sự kiện khi người dùng nhấp vào một dòng chữ trong danh sách
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            PDFFile pdfFile = pdfList.get(position);
+                            openPDFViewActivity(pdfFile);
+                        }
+                    }
+                });
             }
 
-            public void bind(String fileName) {
-                txtFileName.setText(fileName);
+            public void bind(PDFFile pdfFile) {
+                txtFileName.setText(pdfFile.getFileName());
             }
         }
     }
+
+    private void openPDFViewActivity(PDFFile pdfFile) {
+        Intent intent = new Intent(this, PDFViewActivity.class);
+        intent.putExtra("pdfFile", pdfFile.getFileUrl());
+        System.out.println("pdfFileName:" + pdfFile.getFileName() + ",pdfFileURL:" + pdfFile.getFileUrl());
+        startActivity(intent);
+    }
 }
+
+
