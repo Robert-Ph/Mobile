@@ -47,12 +47,13 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
             }
         });
 
-        // Nhận tên file PDF từ Intent
-        String fileName = getIntent().getStringExtra("fileName");
+        // Get the PDF file name from the Intent
+        String pdfFile = getIntent().getStringExtra("pdfFile");
 
-        if (fileName != null) {
-            // Xử lý hiển thị file PDF dựa trên tên file
-            displayPDF(fileName);
+        System.out.println("pdfFile: " + pdfFile);
+        if (pdfFile != null) {
+            // Handle displaying the PDF file based on the file name
+            downloadAndDisplayPDF(pdfFile);
         } else {
             Toast.makeText(this, "No PDF file specified", Toast.LENGTH_SHORT).show();
         }
@@ -77,23 +78,60 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
         }
     }
 
-    private void displayPDF(String fileName) {
-        // Đường dẫn đầy đủ đến file PDF
-        String filePath = getExternalFilesDir(null) + "/" + fileName;
+    private void downloadAndDisplayPDF(String pdfFile) {
+        String url = pdfFile;
+        new DownloadPDFTask().execute(url);
+    }
 
-        File file = new File(filePath);
-        if (file.exists()) {
-            pdfView.fromFile(file)
-                    .defaultPage(0)
-                    .enableSwipe(true)
-                    .swipeHorizontal(false)
-                    .onPageChange(this)
-                    .onLoad(this)
-                    .scrollHandle(new DefaultScrollHandle(this))
-                    .load();
-        } else {
-            Toast.makeText(this, "PDF file does not exist", Toast.LENGTH_SHORT).show();
+    private class DownloadPDFTask extends AsyncTask<String, Void, File> {
+
+        @Override
+        protected File doInBackground(String... urls) {
+            String url = urls[0];
+            File file = new File(getCacheDir(), "temp.pdf");
+            try {
+                HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+                connection.connect();
+
+                InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    fileOutputStream.write(buffer, 0, bytesRead);
+                }
+
+                fileOutputStream.close();
+                inputStream.close();
+
+                return file;
+            } catch (IOException e) {
+                Log.e(TAG, "Error downloading PDF: " + e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
         }
+
+        @Override
+        protected void onPostExecute(File file) {
+            if (file != null) {
+                displayPDFFromFile(file);
+            } else {
+                Toast.makeText(PDFViewActivity.this, "Error downloading PDF", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void displayPDFFromFile(File file) {
+        pdfView.fromFile(file)
+                .defaultPage(0)
+                .enableSwipe(true)
+                .swipeHorizontal(false)
+                .onPageChange(this)
+                .onLoad(this)
+                .scrollHandle(new DefaultScrollHandle(this))
+                .load();
     }
 
     private void displayPDFFromUri(Uri uri) {
@@ -109,12 +147,13 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
 
     @Override
     public void onPageChanged(int page, int pageCount) {
-        // Xử lý sự thay đổi trang
+        // Handle page change event
     }
 
     @Override
     public void loadComplete(int nbPages) {
-        Toast.makeText(this, "Load thành công!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Load successful!", Toast.LENGTH_SHORT).show();
     }
 }
+
 

@@ -7,6 +7,12 @@ android {
     namespace 'com.example.sharingapp'
     compileSdk 33
 
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/services/sun.misc.Service'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
     defaultConfig {
         applicationId "com.example.sharingapp"
         minSdk 21
@@ -65,5 +71,11 @@ dependencies {
     annotationProcessor "org.androidannotations:androidannotations:4.6.0"
 
     implementation 'org.jsoup:jsoup:1.14.3'
+
+//    drive
+    implementation 'com.google.api-client:google-api-client:2.0.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
+    implementation 'com.google.apis:google-api-services-drive:v3-rev20220815-2.0.0'
+    implementation 'com.google.api-client:google-api-client-jackson2:1.34.1'
 
 }

@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sharingapp.ModelDrive.DriveService;
+import com.example.sharingapp.ModelDrive.PDFFile;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,6 +30,7 @@ import java.util.List;
 public class PDFListActivity extends AppCompatActivity {
 
     private static final String TAG = "PDFListActivity";
+    private static final String FOLDER_ID = "12TvrHL-ly3R3FHSAyHFt5vVJF6LcTlg5"; // Replace with your folder ID
 
     private RecyclerView recyclerView;
     private PDFListAdapter adapter;
@@ -41,54 +45,22 @@ public class PDFListActivity extends AppCompatActivity {
         adapter = new PDFListAdapter();
         recyclerView.setAdapter(adapter);
 
-        String url = "https://drive.google.com/drive/folders/12TvrHL-ly3R3FHSAyHFt5vVJF6LcTlg5?usp=sharing";
-        new LoadPDFListTask().execute(url);
+        new LoadPDFListTask().execute();
     }
 
-    private class LoadPDFListTask extends AsyncTask<String, Void, List<PDFFile>> {
+    private class LoadPDFListTask extends AsyncTask<Void, Void, List<PDFFile>> {
 
         @Override
-        protected List<PDFFile> doInBackground(String... urls) {
-            String url = urls[0];
-            List<PDFFile> fileList = new ArrayList<>();
+        protected List<PDFFile> doInBackground(Void... voids) {
             try {
-                Document document = Jsoup.connect(url).get();
-//                System.out.println("document:" + document);
-                Elements fileElements = document.select("div[data-tooltip]");
-                for (Element fileElement : fileElements) {
-                    String fileName = fileElement.attr("data-tooltip");
-                    if (!fileName.startsWith("Đang tải người dùng")) { // Kiểm tra xem phần tử có chứa tên file và thư mục hay không
-                        String[] parts = fileName.split(":");
-                        if (parts.length >= 2) {
-                            String fileType = parts[0].trim();
-                            String fileDetails = parts[1].trim();
-                            if (fileType.equalsIgnoreCase("PDF")) { // Kiểm tra loại file có phải là PDF không
-                                String fileUrl = getFileUrl(fileElement); // Lấy URL của tệp PDF
-                                PDFFile pdfFile = new PDFFile(fileName, fileUrl);
-                                fileList.add(pdfFile);
-                            }
-                        }
-                    }
-                }
+                DriveService driveService = new DriveService(PDFListActivity.this, "credential.json");
+                System.out.println(driveService.getPDFFilesInFolder(FOLDER_ID));
+                return driveService.getPDFFilesInFolder(FOLDER_ID);
             } catch (IOException e) {
-                Log.e(TAG, "Error loading PDF list: " + e.getMessage());
                 e.printStackTrace();
+                return null;
             }
-
-            return fileList;
         }
-
-        // Phương thức này giúp lấy URL của tệp PDF từ phần tử HTML
-        private String getFileUrl(Element fileElement) {
-            String imageUrl = fileElement.select("img").attr("src");
-            if (imageUrl != null && imageUrl.startsWith("https://lh3.google.com")) {
-                String fileId = imageUrl.substring(imageUrl.lastIndexOf("/d/") + 3, imageUrl.indexOf("="));
-                return "https://drive.google.com/uc?id=" + fileId;
-            }
-            return null;
-        }
-
-
         @Override
         protected void onPostExecute(List<PDFFile> fileList) {
             if (fileList != null) {

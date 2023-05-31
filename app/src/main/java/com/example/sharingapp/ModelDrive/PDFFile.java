@@ -1,4 +1,4 @@
-package com.example.sharingapp;
+package com.example.sharingapp.ModelDrive;
 
 import java.io.Serializable;
 
@@ -18,4 +18,13 @@ public class PDFFile implements Serializable {
     public String getFileUrl() {
         return fileUrl;
     }
+
+    @Override
+    public String toString() {
+        return "PDFFile{" +
+                "fileName='" + fileName + '\'' +
+                ", fileUrl='" + fileUrl + '\'' +
+                '}';
+    }
 }
+
