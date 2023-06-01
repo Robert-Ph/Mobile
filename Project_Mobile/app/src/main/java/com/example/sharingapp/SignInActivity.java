@@ -161,7 +161,11 @@ public class SignInActivity extends AppCompatActivity {
                     //check if email y verified before user can access their profile
                     if (firebaseUser.isEmailVerified()) {
                         Toast.makeText(SignInActivity.this, "You are logged in now", Toast.LENGTH_SHORT).show();
+
                         //Open user Profile
+                        //Start the UserProfileActivity
+                        startActivity(new Intent(SignInActivity.this, UserProfileActivity.class));
+                        finish(); //close LoginAcitvity
 
                     } else {
                         firebaseUser.sendEmailVerification();
@@ -187,7 +191,7 @@ public class SignInActivity extends AppCompatActivity {
                             Intent intent = new Intent(SignInActivity.this, MainActivity2.class);
                             startActivity(intent);
                         }
-                    }, 2000 + 1000);
+                    }, 0);
 
 
                 } else {
@@ -234,4 +238,17 @@ public class SignInActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    //Check if User is already logged in. In such case, straightaway take the user to the User's profile
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (authProfile.getCurrentUser() != null ){
+            Toast.makeText(SignInActivity.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
+
+            //Start the UserProfileActivity
+//            startActivity(new Intent(SignInActivity.this, UserProfileActivity.class));
+//            startActivity(new Intent(SignInActivity.this, MainActivity2.class));
+//            finish(); //close LoginAcitvity
+        }
+    }
 }

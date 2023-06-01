@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +20,13 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity2 extends AppCompatActivity {
     DrawerLayout drawer;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,25 +41,25 @@ public class MainActivity2 extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.nav_profile:
-//                        Toast.makeText(MainActivity2.this, "Profile", Toast.LENGTH_SHORT).show();
-//                        return true;
-//                    case R.id.nav_setting:
-//                        Toast.makeText(MainActivity2.this, "Setting", Toast.LENGTH_SHORT).show();
-//                        return true;
-//                    case R.id.ggmaps:
-//                        setContentView(R.layout.activity_maps);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_profile:
+//                        setContentView(R.layout.activity_user_profile);
+                        Intent intent = new Intent(MainActivity2.this, UserProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
+                    case R.id.nav_setting:
+                        Toast.makeText(MainActivity2.this, "Setting", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         TextView maps = (TextView) findViewById(R.id.gg_map);
@@ -88,4 +91,8 @@ public class MainActivity2 extends AppCompatActivity {
         }
 
     }
+
+
+    //-------------------------------------------------------------------------
+
 }

@@ -14,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainChatGPT"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".UserProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainChatGPT"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
