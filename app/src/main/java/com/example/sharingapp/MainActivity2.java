@@ -8,6 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -76,9 +78,33 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView pdfList = (TextView) findViewById(R.id.pdfList);
+        pdfList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity2.this, PDFListActivity.class);
+                startActivity(intent);
+            }
+        });
+        TextView mangeFilePDF = (TextView) findViewById(R.id.mangeFilePDF);
+        mangeFilePDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
+            }
+        });
 
     }
-
+    private void openGoogleDriveFolder(String folderId) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://drive.google.com/drive/folders/" + folderId));
+        PackageManager packageManager = getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity2.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -88,4 +114,6 @@ public class MainActivity2 extends AppCompatActivity {
         }
 
     }
+
+
 }
