@@ -40,6 +40,9 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
 
         pdfView = findViewById(R.id.pdfView);
         btnPickFile = findViewById(R.id.btnPickFile);
+//        an button
+        btnPickFile.setVisibility(View.GONE);
+
         btnPickFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
