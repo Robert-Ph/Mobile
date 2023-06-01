@@ -1,8 +1,12 @@
 package com.example.sharingapp.ModelDrive;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.OpenableColumns;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.http.FileContent;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -17,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DriveService {
@@ -53,25 +58,6 @@ public class DriveService {
                 .build();
     }
 
-    public List<String> getPDFUrlsInFolder(String folderId) throws IOException {
-        FileList result = driveService.files().list()
-                .setQ("'" + folderId + "' in parents and mimeType='" + MIME_TYPE_PDF + "'")
-                .setFields("files(webViewLink)")
-                .execute();
-
-        List<File> files = result.getFiles();
-        List<String> urls = new ArrayList<>();
-        if (files != null && !files.isEmpty()) {
-            for (com.google.api.services.drive.model.File file : files) {
-                String url = file.getWebViewLink();
-                urls.add(url);
-            }
-        }
-//        System.out.println(result);
-
-        return urls;
-    }
-
     public List<PDFFile> getPDFFilesInFolder(String folderId) throws IOException {
         FileList result = driveService.files().list()
                 .setQ("'" + folderId + "' in parents and mimeType='" + MIME_TYPE_PDF + "'")
@@ -90,9 +76,5 @@ public class DriveService {
         }
         return pdfFiles;
     }
-
-
-
-
 }
 

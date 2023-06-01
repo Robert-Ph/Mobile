@@ -53,6 +53,13 @@
                 android:layout_below="@+id/chat_gpt"
                 android:text="Danh sách tài liệu" />
 
+            <TextView
+                android:id="@+id/mangeFilePDF"
+                style="@style/itemText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pdfList"
+                android:text="Quản lý tài liệu" />
         </RelativeLayout>
 
 

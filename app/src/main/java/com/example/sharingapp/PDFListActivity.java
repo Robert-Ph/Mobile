@@ -30,7 +30,7 @@ import java.util.List;
 public class PDFListActivity extends AppCompatActivity {
 
     private static final String TAG = "PDFListActivity";
-    private static final String FOLDER_ID = "12TvrHL-ly3R3FHSAyHFt5vVJF6LcTlg5"; // Replace with your folder ID
+    private static final String FOLDER_ID = "1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl"; // Replace with your folder ID
 
     private RecyclerView recyclerView;
     private PDFListAdapter adapter;
@@ -53,7 +53,7 @@ public class PDFListActivity extends AppCompatActivity {
         @Override
         protected List<PDFFile> doInBackground(Void... voids) {
             try {
-                DriveService driveService = new DriveService(PDFListActivity.this, "credential.json");
+                DriveService driveService = new DriveService(PDFListActivity.this, "credential2.json");
                 System.out.println(driveService.getPDFFilesInFolder(FOLDER_ID));
                 return driveService.getPDFFilesInFolder(FOLDER_ID);
             } catch (IOException e) {
