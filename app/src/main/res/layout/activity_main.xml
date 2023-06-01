@@ -35,7 +35,20 @@
         android:layout_centerHorizontal="true"
         android:text="SignIn"
         android:textSize="25dp" />
-<!--    <Button-->
+
+    <Button
+        android:id="@+id/btn_TestPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testPDF" />
+
+    <Button
+        android:id="@+id/btn_UpPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_TestPDF"
+        android:text="Up PDF" />
+    <!--    <Button-->
 <!--        android:id="@+id/changeView"-->
 <!--        android:layout_width="50dp"-->
 <!--        android:layout_height="50dp"-->

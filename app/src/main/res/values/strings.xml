@@ -12,4 +12,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="server_client_id">214558267545-l88otli63th9gbkpf9ssmif471imccsr.apps.googleusercontent.com</string>
 </resources>
