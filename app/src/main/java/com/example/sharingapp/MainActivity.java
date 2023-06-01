@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
+//        an button
+        btnTestPDF.setVisibility(View.GONE);
         btnTestPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btn_UpPDF = findViewById(R.id.btn_UpPDF);
+        //        an button
+        btn_UpPDF.setVisibility(View.GONE);
         btn_UpPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
