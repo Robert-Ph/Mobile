@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/dialog_contenner"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_dilog"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/menu_caner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/more_24"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/background_dilog">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/map_md"
+                android:background="@drawable/ma_dinh"
+                android:layout_marginLeft="55dp"/>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/map_vt"
+                android:background="@drawable/ve_tinh"
+                android:layout_marginLeft="60dp"
+                />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/map_dh"
+                android:background="@drawable/dia_hinh"
+                android:layout_marginLeft="60dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/background_dilog"
+            android:layout_marginBottom="20dp"
+            >
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="45dp"
+               android:text="Mặc định"
+               android:textSize="20dp"
+               android:fontFamily="@font/font_arial"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Vệ tinh"
+                android:textSize="20dp"
+                android:fontFamily="@font/font_arial"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:text="Địa hình"
+                android:textSize="20dp"
+                android:fontFamily="@font/font_arial"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

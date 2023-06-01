@@ -40,13 +40,64 @@
             android:layout_toRightOf="@+id/image"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/font_arial"
             android:textSize="15dp"
             android:textColor="#000"
             android:id="@+id/input_Search"
             android:background="@null"
             android:hint="Tìm kiếm"/>
 
+        <ImageButton
+            android:id="@+id/send_maps"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/send_map" />
+
+        <ImageButton
+            android:id="@+id/clear_text"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/send_maps"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/clear_24" />
+
+
+
 
     </RelativeLayout>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/layout1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/ic_gps"
+        android:src="@drawable/gps"/>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/layout1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/dialog"
+        android:src="@drawable/map_24"/>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/layout1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/place_info"
+        android:src="@drawable/info"/>
 </RelativeLayout>
 

@@ -38,6 +38,7 @@ dependencies {
     implementation 'androidx.mediarouter:mediarouter:1.4.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
 
 
 //    implementation 'androidx.appcompat:appcompat:1.6.1'
