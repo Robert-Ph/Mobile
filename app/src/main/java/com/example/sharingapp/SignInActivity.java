@@ -117,21 +117,7 @@ public class SignInActivity extends AppCompatActivity {
         textViewForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                builder.setTitle("Notion!!!");
-                builder.setMessage("If you don't remember your password, create a new account");
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Đóng cửa sổ thông báo
-                        dialog.dismiss();
-                    }
-                });
-
-                // Tạo đối tượng AlertDialog từ AlertDialog.Builder và hiển thị nó lên màn hình
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                startActivity(new Intent(SignInActivity.this,ForgotPassActivity.class));
             }
         });
 

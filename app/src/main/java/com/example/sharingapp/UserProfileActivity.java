@@ -33,11 +33,16 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth authProfile;
 
+    private TextView textNav_user;
+
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTextViewNavHeader();
+
         setContentView(R.layout.activity_user_profile);
 
         textViewWelcome = findViewById(R.id.textView_show_welcome);
@@ -45,6 +50,10 @@ public class UserProfileActivity extends AppCompatActivity {
         textViewEmail = findViewById(R.id.textView_show_email);
         textViewDoB = findViewById(R.id.textView_show_dob);
         textViewGender = findViewById(R.id.textView_show_gender);
+
+
+
+
         progressBar = findViewById(R.id.progressBar);
 
         authProfile = FirebaseAuth.getInstance();
@@ -61,6 +70,8 @@ public class UserProfileActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
     }
 
     // Users coming to UserProfileActivity after successful registration
@@ -155,5 +166,14 @@ public class UserProfileActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    void setTextViewNavHeader(){
+        setContentView(R.layout.nav_header);
+
+        textNav_user = findViewById(R.id.nav_name_user);
+        authProfile = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        textNav_user.setText(firebaseUser.getDisplayName());
+
     }
 }
