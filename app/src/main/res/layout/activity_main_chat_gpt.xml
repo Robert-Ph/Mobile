@@ -12,15 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"-->
-<!--            app:title="My ChatGPT"-->
-<!--            android:background="@color/pink_accent"-->
-<!--            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-<!--            android:elevation="4dp"/>-->
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -66,6 +57,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="Chào mừng bạn đến với ChatGPT\nDùng thử ngay bây giờ"
+                android:fontFamily="@font/font_arial"
                 android:textSize="20dp" />
 
             <RelativeLayout
@@ -79,11 +71,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
                     android:layout_toLeftOf="@id/send_bnt"
                     android:background="@drawable/rounded_corner"
+                    android:fontFamily="@font/font_arial"
                     android:hint="Hỏi ngay bây giờ?"
-                    android:layout_marginLeft="8dp"
                     android:padding="16dp" />
                 <ImageButton
                     android:layout_width="48dp"

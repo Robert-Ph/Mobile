@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink_backgroud">#f7e6d2</color>
     <color name="pink_accent">#fab1d7</color>
+    <color name="ligth_black">#1A1110</color>
 </resources>
