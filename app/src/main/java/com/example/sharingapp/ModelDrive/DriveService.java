@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DriveService {
-    private static final String API_KEY = "AIzaSyAc_IdV4w9tQhneBRS-ISkfQrhPDxO12LU"; // Replace with your API key
+    private static final String API_KEY = "AIzaSyAc_IdV4w9tQhneBRS-ISkfQrhPDxO12LU";
     private static final String APPLICATION_NAME = "demodrive1";
     private static final String MIME_TYPE_PDF = "application/pdf";
 

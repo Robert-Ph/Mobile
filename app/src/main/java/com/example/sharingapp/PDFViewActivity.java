@@ -150,7 +150,6 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
 
     @Override
     public void onPageChanged(int page, int pageCount) {
-        // Handle page change event
     }
 
     @Override

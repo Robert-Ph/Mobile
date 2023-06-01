@@ -34,7 +34,7 @@ import java.util.List;
 public class PDFListActivity extends AppCompatActivity {
 
     private static final String TAG = "PDFListActivity";
-    private static final String FOLDER_ID = "1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl"; // Replace with your folder ID
+    private static final String FOLDER_ID = "1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl";
 
     private RecyclerView recyclerView;
     private PDFListAdapter adapter;
@@ -48,7 +48,6 @@ public class PDFListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdflist);
 
-        // Initialize Spinner and Adapter
         spinner = findViewById(R.id.spinner);
         spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +68,6 @@ public class PDFListActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
             }
         });
 
