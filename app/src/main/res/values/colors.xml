@@ -10,4 +10,6 @@
     <color name="pink_backgroud">#f7e6d2</color>
     <color name="pink_accent">#fab1d7</color>
     <color name="ligth_black">#1A1110</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="dark_grey">#A9A9A9</color>
 </resources>

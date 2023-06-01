@@ -229,11 +229,11 @@ public class SignUpActivity extends AppCompatActivity {
                                         Toast.makeText(SignUpActivity.this, "User register successfully. Please vertify your email",
                                                 Toast.LENGTH_LONG).show();
                                 //Open user Profile after successful registration
-//                                        Intent intent = new Intent(SignUpActivity.this, UserProfileActivity.class);
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                                                                                        | Intent.FLAG_ACTIVITY_NEW_TASK );
-//                                        startActivity(intent);
-//                                        finish(); //to close Register Activity
+                                        Intent intent = new Intent(SignUpActivity.this, UserProfileActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                                                        | Intent.FLAG_ACTIVITY_NEW_TASK );
+                                        startActivity(intent);
+                                        finish(); //to close Register Activity
                                     }else {
                                         Toast.makeText(SignUpActivity.this, "User register failed. Please try again",
                                                 Toast.LENGTH_LONG).show();
