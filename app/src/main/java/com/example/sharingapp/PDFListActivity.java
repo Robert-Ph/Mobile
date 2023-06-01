@@ -12,10 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sharingapp.ModelDrive.DriveService;
+import com.example.sharingapp.ModelDrive.Folder;
 import com.example.sharingapp.ModelDrive.PDFFile;
 
 import org.jsoup.Jsoup;
@@ -35,32 +39,58 @@ public class PDFListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PDFListAdapter adapter;
 
+    private Spinner spinner;
+    private ArrayAdapter<String> spinnerAdapter;
+    private List<Folder> folderList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdflist);
+
+        // Initialize Spinner and Adapter
+        spinner = findViewById(R.id.spinner);
+        spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (folderList != null && position >= 0 && position < folderList.size()) {
+                    Folder selectedFolder = folderList.get(position);
+                    new LoadPDFListTask().execute(selectedFolder.getFolderId());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PDFListAdapter();
         recyclerView.setAdapter(adapter);
 
-        new LoadPDFListTask().execute();
+        new LoadFolderListTask().execute(FOLDER_ID);
     }
 
-    private class LoadPDFListTask extends AsyncTask<Void, Void, List<PDFFile>> {
+    private class LoadPDFListTask extends AsyncTask<String, Void, List<PDFFile>> {
 
         @Override
-        protected List<PDFFile> doInBackground(Void... voids) {
+        protected List<PDFFile> doInBackground(String... folderIds) {
             try {
+                String folderId = folderIds[0];
                 DriveService driveService = new DriveService(PDFListActivity.this, "credential2.json");
-                System.out.println(driveService.getPDFFilesInFolder(FOLDER_ID));
-                return driveService.getPDFFilesInFolder(FOLDER_ID);
+                return driveService.getPDFFilesInFolder(folderId);
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
             }
         }
+
         @Override
         protected void onPostExecute(List<PDFFile> fileList) {
             if (fileList != null) {
@@ -106,7 +136,7 @@ public class PDFListActivity extends AppCompatActivity {
                 super(itemView);
                 txtFileName = itemView.findViewById(R.id.txtFileName);
 
-                // Xử lý sự kiện khi người dùng nhấp vào một dòng chữ trong danh sách
+                // Handle click event when a user taps on a row in the list
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -131,6 +161,43 @@ public class PDFListActivity extends AppCompatActivity {
         System.out.println("pdfFileName:" + pdfFile.getFileName() + ",pdfFileURL:" + pdfFile.getFileUrl());
         startActivity(intent);
     }
+
+    private class LoadFolderListTask extends AsyncTask<String, Void, List<Folder>> {
+
+        @Override
+        protected List<Folder> doInBackground(String... folderIds) {
+            try {
+                String folderId = folderIds[0];
+                DriveService driveService = new DriveService(PDFListActivity.this, "credential2.json");
+                return driveService.getFolderList(folderId);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<Folder> folderList) {
+            if (folderList != null) {
+                PDFListActivity.this.folderList = folderList;
+
+                List<String> folderNames = new ArrayList<>();
+                // Add the default folder "Tất cả" to the beginning of the list
+                Folder defaultFolder = new Folder("Tất cả", "1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
+                folderList.add(0, defaultFolder);
+
+                for (Folder folder : folderList) {
+                    folderNames.add(folder.getFolderName());
+                }
+                spinnerAdapter.clear();
+                spinnerAdapter.addAll(folderNames);
+            } else {
+                Toast.makeText(PDFListActivity.this, "Error loading folder list", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
+
+
 
 

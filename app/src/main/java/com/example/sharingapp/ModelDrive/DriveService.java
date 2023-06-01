@@ -76,5 +76,27 @@ public class DriveService {
         }
         return pdfFiles;
     }
+
+    public List<Folder> getFolderList(String parentFolderId) throws IOException {
+        FileList result = driveService.files().list()
+                .setQ("mimeType='application/vnd.google-apps.folder' and '" + parentFolderId + "' in parents")
+                .setFields("files(id, name)")
+                .execute();
+
+        List<File> folders = result.getFiles();
+        List<Folder> folderList = new ArrayList<>();
+        if (folders != null && !folders.isEmpty()) {
+            for (File folder : folders) {
+                String folderId = folder.getId();
+                String folderName = folder.getName();
+                Folder folderItem = new Folder(folderName, folderId);
+                folderList.add(folderItem);
+            }
+        }
+        System.out.println("folderList:" + folderList);
+        return folderList;
+    }
+
+
 }
 
