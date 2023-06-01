@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "26477977571",
+    "project_id": "sharingapp-76181",
+    "storage_bucket": "sharingapp-76181.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26477977571:android:bcd9a48f610c0fbdf30ad6",
+        "android_client_info": {
+          "package_name": "com.example.sharingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Nxmb4XAhjmKTgt4l3yvbyxJMMUfTF28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
