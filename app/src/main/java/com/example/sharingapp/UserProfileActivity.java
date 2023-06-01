@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class UserProfileActivity extends AppCompatActivity {
@@ -36,6 +38,8 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView textNav_user;
 
     private Toolbar toolbar;
+
+    private ImageView avt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,14 @@ public class UserProfileActivity extends AppCompatActivity {
         textViewDoB = findViewById(R.id.textView_show_dob);
         textViewGender = findViewById(R.id.textView_show_gender);
 
+        avt = findViewById(R.id.imageView_profile_dp);
 
+        avt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserProfileActivity.this, UploadProfilePic.class));
+            }
+        });
 
 
         progressBar = findViewById(R.id.progressBar);
@@ -125,6 +136,16 @@ public class UserProfileActivity extends AppCompatActivity {
                     textViewEmail.setText(email);
                     textViewDoB.setText(doB);
                     textViewGender.setText(gender);
+
+                    //Set avt user after uploaded image
+                    Uri uri = firebaseUser.getPhotoUrl();
+                    int targetWidth = 500; // Chiều rộng mong muốn của ảnh
+                    int targetHeight = 500; // Chiều cao mong muốn của ảnh
+//                    Picasso.with(UserProfileActivity.this).load(uri).resize(targetWidth,targetHeight).centerCrop().into(avt);
+                    Picasso.with(UserProfileActivity.this).load(uri).fit().into(avt);
+//                    Toast.makeText(UserProfileActivity.this, avt.getWidth()+" va "+avt.getHeight(), Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(UserProfileActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                 }
                 progressBar.setVisibility(View.GONE);
             }
@@ -175,5 +196,10 @@ public class UserProfileActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         textNav_user.setText(firebaseUser.getDisplayName());
 
+    }
+    @Override
+    public void onBackPressed() {
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
     }
 }

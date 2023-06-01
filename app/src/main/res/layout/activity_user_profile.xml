@@ -22,15 +22,15 @@
             app:titleTextColor="@android:color/white"
             app:menu="@menu/common_menu"/>
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="350dp"
             android:background="@color/pink_accent">
 
             <ImageView
                 android:id="@+id/imageView_profile_dp"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="@drawable/ic_userdefault_male" />
 
@@ -38,13 +38,12 @@
                 android:id="@+id/textView_show_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView_profile_dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
                 android:hint="Loading..."
+                android:layout_gravity="center|bottom"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/white" />
-        </RelativeLayout>
+        </FrameLayout>
         <RelativeLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
