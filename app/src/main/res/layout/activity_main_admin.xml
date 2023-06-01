@@ -36,6 +36,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Quản lý tài liệu" />
+
+            <TextView
+                android:id="@+id/mangeAccount"
+                style="@style/itemText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mangeFilePDF"
+                android:text="Quản lý tài khoản" />
         </RelativeLayout>
 
 

@@ -185,6 +185,8 @@ public class SignInActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Intent intent = new Intent(SignInActivity.this, MainActivity2.class);
+                            if (email.equals("truongclone232@gmail.com"))
+                                intent = new Intent(SignInActivity.this, MainAdminActivity.class);
                             startActivity(intent);
                         }
                     }, 2000 + 1000);
