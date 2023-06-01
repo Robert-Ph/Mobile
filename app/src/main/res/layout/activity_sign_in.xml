@@ -44,7 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/email_input"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@xml/rounded_border"
         android:hint="Password"
         android:imeOptions="actionDone"
@@ -53,6 +55,15 @@
         android:textColor="#161a29"
         android:textColorHint="#C2C2C2"
         android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/imageView_show_hide_pwd"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_below="@+id/email_input"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="350dp"/>
+
     <Button
         android:id="@+id/btn_doneSignIn"
         android:layout_width="wrap_content"
@@ -64,6 +75,15 @@
         android:layout_marginTop="20dp"
         android:text="SignIn"
         android:background="@xml/btn_pressed" />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="10dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/forgotPass"

@@ -14,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainChatGPT"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".MainAdminActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainChatGPT"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -36,6 +39,12 @@
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".PDFListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PDFViewActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity2"
             android:exported="false"

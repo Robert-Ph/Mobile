@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     xmlns:tools="http://schemas.android.com/tools"
     tools:openDrawer="start">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,34 +31,10 @@
             android:paddingTop="30dp">
 
             <TextView
-                android:id="@+id/gg_map"
-                style="@style/itemText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bookstore Maps" />
-
-            <TextView
-                android:id="@+id/chat_gpt"
-                style="@style/itemText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/gg_map"
-                android:text="My ChatGPT" />
-
-            <TextView
-                android:id="@+id/pdfList"
-                style="@style/itemText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/chat_gpt"
-                android:text="Danh sách tài liệu" />
-
-            <TextView
                 android:id="@+id/mangeFilePDF"
                 style="@style/itemText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/pdfList"
                 android:text="Quản lý tài liệu" />
         </RelativeLayout>
 
@@ -71,5 +47,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
