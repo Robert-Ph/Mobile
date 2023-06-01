@@ -290,4 +290,9 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
+    @Override
+    public void onBackPressed() {
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
+    }
 }

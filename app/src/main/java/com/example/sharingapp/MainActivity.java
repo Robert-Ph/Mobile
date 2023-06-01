@@ -88,5 +88,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
         }
     }
+    @Override
+    public void onBackPressed() {
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
+    }
 
 }

@@ -43,6 +43,7 @@ public class ForgotPassActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Gửi email thành công, thông báo cho người dùng.
                                     Toast.makeText(ForgotPassActivity.this, "Email sent. Please check your inbox.", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(ForgotPassActivity.this,SignInActivity.class));
                                 } else {
                                     // Gửi email thất bại, thông báo cho người dùng.
                                     Toast.makeText(ForgotPassActivity.this, "Failed to send email. Please try again.", Toast.LENGTH_SHORT).show();
