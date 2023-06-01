@@ -62,6 +62,15 @@ public class MainAdminActivity extends AppCompatActivity {
             }
         });
 
+        TextView textView = findViewById(R.id.mangeFilePDF);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainAdminActivity.this, ManagerDocument.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void openGoogleDriveFolder(String folderId) {

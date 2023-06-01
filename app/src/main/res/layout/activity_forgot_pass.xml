@@ -30,6 +30,7 @@
         android:layout_marginTop="200dp"
         android:background="@xml/rounded_border"
         android:hint="Enter your email"
+        android:fontFamily="@font/font_arial"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"

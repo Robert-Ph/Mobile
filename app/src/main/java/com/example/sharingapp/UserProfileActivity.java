@@ -137,6 +137,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     textViewDoB.setText(doB);
                     textViewGender.setText(gender);
 
+
                     //Set avt user after uploaded image
                     Uri uri = firebaseUser.getPhotoUrl();
                     int targetWidth = 500; // Chiều rộng mong muốn của ảnh
@@ -190,7 +191,6 @@ public class UserProfileActivity extends AppCompatActivity {
     }
     void setTextViewNavHeader(){
         setContentView(R.layout.nav_header);
-
         textNav_user = findViewById(R.id.nav_name_user);
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();

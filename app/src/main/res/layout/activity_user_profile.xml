@@ -41,6 +41,7 @@
                 android:layout_centerHorizontal="true"
                 android:hint="Loading..."
                 android:layout_gravity="center|bottom"
+                android:fontFamily="@font/font_arial"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/white" />
         </FrameLayout>
@@ -62,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_show_fullname"
                 android:layout_alignStart="@+id/ic_profile"
+                android:fontFamily="@font/font_arial"
                 android:hint="Loading"
                 android:layout_marginStart="50dp"
                 android:textSize="18sp"/>
@@ -87,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_show_email"
                 android:layout_alignStart="@+id/ic_email"
+                android:fontFamily="@font/font_arial"
                 android:hint="Loading"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
@@ -114,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_show_dob"
                 android:layout_alignStart="@+id/ic_dob"
+                android:fontFamily="@font/font_arial"
                 android:hint="Loading"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
@@ -141,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_show_gender"
                 android:layout_alignStart="@+id/ic_gender"
+                android:fontFamily="@font/font_arial"
                 android:hint="Loading"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
