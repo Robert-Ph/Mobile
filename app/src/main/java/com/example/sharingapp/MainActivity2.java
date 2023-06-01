@@ -89,24 +89,6 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        TextView mangeFilePDF = (TextView) findViewById(R.id.mangeFilePDF);
-        mangeFilePDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
-            }
-        });
-
-    }
-    private void openGoogleDriveFolder(String folderId) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://drive.google.com/drive/folders/" + folderId));
-        PackageManager packageManager = getPackageManager();
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity2.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
-        }
     }
     @Override
     public void onBackPressed() {
