@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
 //        an button
-        btnTestPDF.setVisibility(View.GONE);
+//        btnTestPDF.setVisibility(View.GONE);
         btnTestPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

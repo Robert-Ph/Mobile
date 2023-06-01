@@ -59,7 +59,11 @@ public class PDFListActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (folderList != null && position >= 0 && position < folderList.size()) {
                     Folder selectedFolder = folderList.get(position);
-                    new LoadPDFListTask().execute(selectedFolder.getFolderId());
+                    if (selectedFolder.getFolderId().equals(FOLDER_ID)) {
+                        new LoadPDFListTask().execute();
+                    } else {
+                        new LoadPDFListTask().execute(selectedFolder.getFolderId());
+                    }
                 }
             }
 
@@ -82,9 +86,21 @@ public class PDFListActivity extends AppCompatActivity {
         @Override
         protected List<PDFFile> doInBackground(String... folderIds) {
             try {
-                String folderId = folderIds[0];
+                List<PDFFile> pdfFiles = new ArrayList<>();
                 DriveService driveService = new DriveService(PDFListActivity.this, "credential2.json");
-                return driveService.getPDFFilesInFolder(folderId);
+                if (folderIds.length > 0) {
+                    for (String folderId : folderIds) {
+                        List<PDFFile> filesInFolder = driveService.getPDFFilesInFolder(folderId);
+                        pdfFiles.addAll(filesInFolder);
+                    }
+                } else {
+                    List<Folder> subFolders = driveService.getFolderList(FOLDER_ID);
+                    for (Folder folder : subFolders) {
+                        List<PDFFile> filesInFolder = driveService.getPDFFilesInFolder(folder.getFolderId());
+                        pdfFiles.addAll(filesInFolder);
+                    }
+                }
+                return pdfFiles;
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -183,7 +199,7 @@ public class PDFListActivity extends AppCompatActivity {
 
                 List<String> folderNames = new ArrayList<>();
                 // Add the default folder "Tất cả" to the beginning of the list
-                Folder defaultFolder = new Folder("Tất cả", "1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
+                Folder defaultFolder = new Folder("Tất cả", FOLDER_ID);
                 folderList.add(0, defaultFolder);
 
                 for (Folder folder : folderList) {
@@ -197,7 +213,6 @@ public class PDFListActivity extends AppCompatActivity {
         }
     }
 }
-
 
 
 
