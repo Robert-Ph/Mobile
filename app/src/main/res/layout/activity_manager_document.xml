@@ -44,16 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view"
                 android:fontFamily="@font/font_arial"
-                android:text="Thêm tài liệu" />
+                android:text="Chỉnh sửa tài liệu" />
 
-            <TextView
-                android:id="@+id/delete"
-                style="@style/itemText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/font_arial"
-                android:layout_below="@+id/add"
-                android:text="Xóa tài liệu" />
         </RelativeLayout>
 
 

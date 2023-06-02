@@ -47,15 +47,15 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     }
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
 
     public void onclickRead(){
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -71,6 +71,10 @@ public class MainActivity2 extends AppCompatActivity {
                         return true;
                     case R.id.nav_setting:
                         Toast.makeText(MainActivity2.this, "Setting", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_exit:
+                        startActivity(new Intent(MainActivity2.this, MainActivity.class));
+                        Toast.makeText(MainActivity2.this, "Logout Successful", Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 return false;
@@ -103,6 +107,11 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
     }
 
 }

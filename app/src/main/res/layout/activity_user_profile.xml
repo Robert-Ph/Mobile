@@ -41,7 +41,7 @@
                 android:layout_centerHorizontal="true"
                 android:hint="Loading..."
                 android:layout_gravity="center|bottom"
-                android:fontFamily="@font/font_arial"
+
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/white" />
         </FrameLayout>
@@ -159,6 +159,7 @@
                 android:background="@color/dark_grey"
                 android:id="@+id/divider_gender"/>
 
+
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,6 +172,16 @@
 
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_back_profile"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:background="@xml/effect_back_btn"
+            android:layout_below="@+id/textView_show_gender"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/app_name" />
 
     </LinearLayout>
 

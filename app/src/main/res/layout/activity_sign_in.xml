@@ -99,12 +99,12 @@
         android:text="Forgot Password ?" />
 
     <Button
-        android:id="@+id/btn_back"
-        android:layout_width="60dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:background="@xml/effect_back_btn"
-        android:contentDescription="@string/app_name" />
+    android:id="@+id/btn_back"
+    android:layout_width="60dp"
+    android:layout_height="48dp"
+    android:layout_alignParentBottom="true"
+    android:background="@xml/effect_back_btn"
+    android:contentDescription="@string/app_name" />
 
 
 

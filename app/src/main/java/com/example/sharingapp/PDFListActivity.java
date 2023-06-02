@@ -197,7 +197,7 @@ public class PDFListActivity extends AppCompatActivity {
 
                 List<String> folderNames = new ArrayList<>();
                 // Add the default folder "Tất cả" to the beginning of the list
-                Folder defaultFolder = new Folder("Tất cả", FOLDER_ID);
+                Folder defaultFolder = new Folder("All Files", FOLDER_ID);
                 folderList.add(0, defaultFolder);
 
                 for (Folder folder : folderList) {

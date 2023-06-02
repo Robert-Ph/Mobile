@@ -36,19 +36,19 @@
         android:text="SignIn"
         android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/btn_TestPDF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="testPDF" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_TestPDF"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="testPDF" />-->
 
-    <Button
-        android:id="@+id/btn_UpPDF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_TestPDF"
-        android:text="Up PDF" />
-    <!--    <Button-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_UpPDF"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/btn_TestPDF"-->
+<!--        android:text="Up PDF" />-->
+<!--    &lt;!&ndash;    <Button&ndash;&gt;-->
 <!--        android:id="@+id/changeView"-->
 <!--        android:layout_width="50dp"-->
 <!--        android:layout_height="50dp"-->
@@ -56,6 +56,14 @@
 <!--        android:contentDescription="@string/app_name"-->
 <!--        android:layout_alignParentBottom="true"-->
 <!--        />-->
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_corner"
+        android:text="EXIT"
+        android:contentDescription="@string/app_name" />
 
 
 
