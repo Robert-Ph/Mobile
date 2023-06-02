@@ -109,7 +109,7 @@ public class MainChatGPT extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
@@ -138,10 +138,6 @@ public class MainChatGPT extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
 
     }
 }

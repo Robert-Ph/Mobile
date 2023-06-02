@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:padding="10dp"
+    tools:context=".ForgotPassActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:gravity="center_horizontal"
+
+        android:textColor="@color/white"
+        android:shadowColor="@color/black"
+        android:shadowRadius="30"
+        android:textStyle="bold"
+        android:background="@color/pink_accent"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:id="@+id/email_forgot"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:background="@xml/rounded_border"
+        android:hint="Enter your email"
+        android:fontFamily="@font/font_arial"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="#161a29"
+        android:textColorHint="#C2C2C2"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/btn_resetpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_forgot"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Reset"
+        android:background="@xml/btn_pressed" />
+    <TextView
+        android:id="@+id/goto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login now"
+        android:layout_below="@id/btn_resetpass"
+        android:layout_marginLeft="50dp"
+        android:minHeight="48dp"/>
+</RelativeLayout>

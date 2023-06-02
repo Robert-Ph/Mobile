@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +22,13 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity2 extends AppCompatActivity {
     DrawerLayout drawer;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +42,44 @@ public class MainActivity2 extends AppCompatActivity {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        onclickRead();
 
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.nav_profile:
-//                        Toast.makeText(MainActivity2.this, "Profile", Toast.LENGTH_SHORT).show();
-//                        return true;
-//                    case R.id.nav_setting:
-//                        Toast.makeText(MainActivity2.this, "Setting", Toast.LENGTH_SHORT).show();
-//                        return true;
-//                    case R.id.ggmaps:
-//                        setContentView(R.layout.activity_maps);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
+
+
+    }
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
+
+    public void onclickRead(){
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_profile:
+                        Intent intent = new Intent(MainActivity2.this, UserProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
+                    case R.id.nav_setting:
+                        Toast.makeText(MainActivity2.this, "Setting", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_exit:
+                        startActivity(new Intent(MainActivity2.this, MainActivity.class));
+                        Toast.makeText(MainActivity2.this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         TextView maps = (TextView) findViewById(R.id.gg_map);
@@ -86,34 +107,11 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        TextView mangeFilePDF = (TextView) findViewById(R.id.mangeFilePDF);
-        mangeFilePDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
-            }
-        });
-
-    }
-    private void openGoogleDriveFolder(String folderId) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://drive.google.com/drive/folders/" + folderId));
-        PackageManager packageManager = getPackageManager();
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity2.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
-        }
     }
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
     }
-
 
 }

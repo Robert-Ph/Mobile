@@ -35,6 +35,7 @@
                 style="@style/itemText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_arial"
                 android:text="Quản lý tài liệu" />
 
             <TextView
@@ -42,6 +43,7 @@
                 style="@style/itemText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_arial"
                 android:layout_below="@+id/mangeFilePDF"
                 android:text="Quản lý tài khoản" />
         </RelativeLayout>

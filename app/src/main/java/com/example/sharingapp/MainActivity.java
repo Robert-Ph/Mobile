@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+
+        Button btn_exit = findViewById(R.id.btn_exit);
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         // event button signIn
         Button btnSignIn = (Button) findViewById(R.id.btn_signIn);
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -56,26 +64,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
+//        Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
 //        an button
-        btnTestPDF.setVisibility(View.GONE);
-        btnTestPDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PDFListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_UpPDF = findViewById(R.id.btn_UpPDF);
-        //        an button
-        btn_UpPDF.setVisibility(View.GONE);
-        btn_UpPDF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
-            }
-        });
+//        btnTestPDF.setVisibility(View.GONE);
+//        btnTestPDF.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, PDFListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        Button btn_UpPDF = findViewById(R.id.btn_UpPDF);
+//        //        an button
+//        btn_UpPDF.setVisibility(View.GONE);
+//        btn_UpPDF.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
+//            }
+//        });
     }
 
     private void openGoogleDriveFolder(String folderId) {
@@ -87,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        // Không thực hiện hành động mặc định của nút Back
+        // Ví dụ: không cho phép quay lại hoặc thoát khỏi ứng dụng
     }
 
 }
