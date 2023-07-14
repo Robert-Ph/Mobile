@@ -1,70 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@drawable/background_main"
-    xmlns:tools="http://schemas.android.com/tools"
 
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="10dp">
 
 
     <Button
         android:id="@+id/btn_signUp"
         style="@style/fontChewy"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@xml/effect_button"
-        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="280dp"
+        android:background="@xml/effect_button"
+        android:gravity="center"
         android:text="SignUp"
+        android:textColor="@color/black"
         android:textSize="25dp" />
 
     <Button
         android:id="@+id/btn_signIn"
         style="@style/fontChewy"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_signUp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:background="@xml/effect_button"
         android:gravity="center"
-        android:layout_below="@+id/btn_signUp"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
         android:text="SignIn"
+        android:textColor="@color/black"
         android:textSize="25dp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_TestPDF"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="testPDF" />-->
+    <Button
+        android:id="@+id/btn_TestPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testPDF" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_UpPDF"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/btn_TestPDF"-->
-<!--        android:text="Up PDF" />-->
-<!--    &lt;!&ndash;    <Button&ndash;&gt;-->
-<!--        android:id="@+id/changeView"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:background="@drawable/press_next"-->
-<!--        android:contentDescription="@string/app_name"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        />-->
+    <Button
+        android:id="@+id/btn_UpPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_TestPDF"
+        android:text="Up PDF" />
+
+    <Button
+        android:id="@+id/changeView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/powered_by_google_dark"
+        android:contentDescription="@string/app_name" />
+
     <Button
         android:id="@+id/btn_exit"
         android:layout_width="60dp"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded_corner"
-        android:text="EXIT"
-        android:contentDescription="@string/app_name" />
-
+        android:contentDescription="@string/app_name"
+        android:text="EXIT" />
 
 
 </RelativeLayout>
