@@ -64,26 +64,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
+        Button btnTestPDF = (Button) findViewById(R.id.btn_TestPDF);
 //        an button
 //        btnTestPDF.setVisibility(View.GONE);
-//        btnTestPDF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, PDFListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        Button btn_UpPDF = findViewById(R.id.btn_UpPDF);
-//        //        an button
+        btnTestPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PDFListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_UpPDF = findViewById(R.id.btn_UpPDF);
+        //        an button
 //        btn_UpPDF.setVisibility(View.GONE);
-//        btn_UpPDF.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        btn_UpPDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //                openGoogleDriveFolder("1zAz5aBqNDgDj2aI5TTXBgWTTB3CI5ehl");
-//            }
-//        });
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void openGoogleDriveFolder(String folderId) {
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "No app available to open Google Drive", Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onBackPressed() {
         // Không thực hiện hành động mặc định của nút Back
